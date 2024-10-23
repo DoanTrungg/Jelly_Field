@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6580186905383420367}
   - component: {fileID: 4003669094722447358}
   - component: {fileID: 4496826191290711272}
+  - component: {fileID: 950484123374585574}
   m_Layer: 5
   m_Name: Tile
   m_TagString: Untagged
@@ -39,8 +40,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -156, y: -278}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6580186905383420367
 CanvasRenderer:
@@ -97,13 +98,25 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 30, y: 30}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &950484123374585574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468272940892125269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608f7db250c131c429a2bc43780fb335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &45334780043758490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,6 +208,18 @@ PrefabInstance:
     - target: {fileID: 7228433043926849497, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
       propertyPath: m_Name
       value: Mini Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -298,6 +323,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mini Tile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.b
+      value: 0.58536845
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.g
+      value: 0.58536845
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5943396
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -400,6 +437,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mini Tile (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.b
+      value: 0.45464578
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7180732
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8113208
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -501,6 +550,18 @@ PrefabInstance:
     - target: {fileID: 7228433043926849497, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
       propertyPath: m_Name
       value: Mini Tile (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5274297
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175090297903123639, guid: 70747fb9b85acee40ac0e59b9eb722ed, type: 3}
+      propertyPath: m_Color.r
+      value: 0.53826743
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
