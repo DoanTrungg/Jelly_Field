@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7498dfeebbe46274598b5a0398ea6ddc, type: 3}
   m_Name: RemoteConfig
   m_EditorClassIdentifier: 
+  listLevel:
+  - width: 3
+    height: 3
+  - width: 3
+    height: 3
+  - width: 4
+    height: 4
   width: 4
   height: 4
   listColor:
@@ -19,3 +26,4 @@ MonoBehaviour:
   - {r: 0.7490196, g: 0.8470589, b: 0.8196079, a: 1}
   - {r: 0.09019608, g: 0.5411765, b: 0.5803922, a: 1}
   - {r: 0.16862746, g: 0.21568629, b: 0.29411766, a: 1}
+  backgroundColor: {r: 0, g: 0, b: 0, a: 0}

@@ -6,10 +6,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RemoteConfig", menuName = "Config/Board")]
 public class ConfigBoard : SingletonScriptableObject<ConfigBoard>
 {
-    [Header("Board Size")]
-    public int width;
-    public int height;
+    public List<LevelConfig> listLevel;
 
     [Header("Color")]
     public List<Color> listColor = new List<Color>();
+    public Color backgroundColor;
+}
+
+[System.Serializable]
+public class LevelConfig
+{
+    public int width;
+    public int height;
 }
