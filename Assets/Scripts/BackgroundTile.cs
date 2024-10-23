@@ -11,7 +11,7 @@ public class BackgroundTile : MonoBehaviour
     private List<Dot> _listDot = new List<Dot>();
     private int _column;
     private int _row;
-    private bool hide;
+    public bool hide;
     public int Column { get => _column; set => _column = value; }
     public int Row { get => _row; set => _row = value; }
     public List<Dot> ListDot { get => _listDot; set => _listDot = value; }
@@ -21,9 +21,9 @@ public class BackgroundTile : MonoBehaviour
 
     public int CellSizeY4x4 => cellSizeY4x4;
 
-    private void Start()
+    private void Update()
     {
-        
+        HideTile(hide);
     }
     public void SetuupBackgroundTile()
     {
@@ -53,6 +53,8 @@ public class BackgroundTile : MonoBehaviour
             {
                 dot.GetComponent<Image>().color = hideColor;
             }
+            Destroy(gameObject.GetComponent<DropArea>());
+            Destroy(gameObject.GetComponent<EquipmentSlot>());
         }
     }
 }

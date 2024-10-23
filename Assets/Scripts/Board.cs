@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class Board : MonoBehaviour
+public class Board : Singleton<Board>
 {
     private const int cellSize3x3 = 70;
     private const int cellSizeY4x4 = 60;
