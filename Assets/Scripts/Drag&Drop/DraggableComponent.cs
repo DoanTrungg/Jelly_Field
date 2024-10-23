@@ -12,11 +12,16 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     public bool FollowCursor { get; set; } = true;
     public Vector3 StarPosition;
     public bool CanDrag { get; set; } = true;
+    Canvas canvas;
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!CanDrag) return;
 
         OnBeginDragHandler?.Invoke(eventData);
+    }
+    private void Start()
+    {
+        canvas = GetComponentInParent<Canvas>();
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -30,7 +35,6 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
 
             if (rectTransform != null)
             {
-                Canvas canvas = GetComponentInParent<Canvas>();
                 rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
             }
         }
@@ -38,7 +42,9 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        RectTransform rectTransform = GetComponent<RectTransform>();
         if (!CanDrag) return;
+
 
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
@@ -60,12 +66,12 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
             if (dropArea.Accept(this))
             {
                 dropArea.Drop(this);
+                gameObject.GetComponent<CanvasGroup>().interactable = false;
+                gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 OnEndDragHandler?.Invoke(eventData, true);
                 return;
             }
         }
-
-        RectTransform rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition = StarPosition;
         OnEndDragHandler?.Invoke(eventData, false);
     }

@@ -61,7 +61,7 @@ public class Board : Singleton<Board>
     }
     private void SetBackgroundTile(BackgroundTile backgroundTile, int width, int height, Transform transform)
     {
-        backgroundTile.SetuupBackgroundTile();
+        backgroundTile.SetupBackgroundTile();
         backgroundTile.gameObject.name = "( W : " + width + ", H :" + height + ")";
         backgroundTile.Row = width;
         backgroundTile.Column = height;

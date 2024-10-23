@@ -1099,6 +1099,7 @@ GameObject:
   - component: {fileID: 7981310025106338738}
   - component: {fileID: 152323981340333443}
   - component: {fileID: 861636231350079125}
+  - component: {fileID: 8961147835655336232}
   - component: {fileID: 8961147835655336231}
   - component: {fileID: 8961147835655336230}
   m_Layer: 5
@@ -1120,6 +1121,7 @@ GameObject:
   - component: {fileID: 7981310024779697277}
   - component: {fileID: 152323980884732492}
   - component: {fileID: 861636231140897114}
+  - component: {fileID: 8961147835555188460}
   - component: {fileID: 4080831122754784084}
   - component: {fileID: 8961147835555188459}
   m_Layer: 5
@@ -2200,6 +2202,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StarPosition: {x: 0, y: 0, z: 0}
+--- !u!225 &8961147835555188460
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741763194427880935}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &8961147835655336229
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2248,7 +2262,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608f7db250c131c429a2bc43780fb335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hide: 0
+  hide: 1
+--- !u!225 &8961147835655336232
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741763194209241640}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

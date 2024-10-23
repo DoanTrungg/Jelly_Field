@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class DropArea : MonoBehaviour
 {
-    public List<DropCondition> DropConditions = new List<DropCondition>();
+    public List<DropCondition> DropConditions;
     public event Action<DraggableComponent> OnDropHandler;
-
+    private void Start()
+    {
+        DropConditions = new List<DropCondition>();
+        OnDropHandler += OnItemDropped;
+    }
     public bool Accept(DraggableComponent draggble)
     {
         return DropConditions.TrueForAll(cond => cond.Check(draggble));
@@ -16,5 +20,11 @@ public class DropArea : MonoBehaviour
     public void Drop(DraggableComponent draggble)
     {
         OnDropHandler?.Invoke(draggble);
+        this.enabled = false;
+    }
+    private void OnItemDropped(DraggableComponent draggable)
+    {
+
+        draggable.transform.position = transform.position;
     }
 }

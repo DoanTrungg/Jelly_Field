@@ -21,11 +21,7 @@ public class BackgroundTile : MonoBehaviour
 
     public int CellSizeY4x4 => cellSizeY4x4;
 
-    private void Update()
-    {
-        HideTile(hide);
-    }
-    public void SetuupBackgroundTile()
+    public void SetupBackgroundTile()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -53,8 +49,6 @@ public class BackgroundTile : MonoBehaviour
             {
                 dot.GetComponent<Image>().color = hideColor;
             }
-            Destroy(gameObject.GetComponent<DropArea>());
-            Destroy(gameObject.GetComponent<EquipmentSlot>());
         }
     }
 }
