@@ -1,3 +1,4 @@
+﻿using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     public event Action<PointerEventData, bool> OnEndDragHandler;
     public bool FollowCursor { get; set; } = true;
     public Vector3 StarPosition;
+    private Vector3 oldPosition;
     public bool CanDrag { get; set; } = true;
     Canvas canvas;
     public void OnBeginDrag(PointerEventData eventData)
@@ -22,6 +24,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     private void Start()
     {
         canvas = GetComponentInParent<Canvas>();
+        oldPosition = transform.localPosition;
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -60,15 +63,16 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
                 break;
             }
         }
-
+        bool hide = false;
         if (dropArea != null)
         {
-            if (dropArea.Accept(this))
+            hide = dropArea.gameObject.GetComponent<BackgroundTile>().hide;
+            if (dropArea.Accept(this) && hide)
             {
                 dropArea.Drop(this);
-                gameObject.GetComponent<CanvasGroup>().interactable = false;
-                gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 OnEndDragHandler?.Invoke(eventData, true);
+                Unihide(dropArea);
+                AnimToTarget();
                 return;
             }
         }
@@ -80,5 +84,20 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
         StarPosition = rectTransform.anchoredPosition;
+    }
+    private void AnimToTarget()
+    {
+        gameObject.GetComponent<Dofade>().FadeOut(0).OnComplete(() =>
+        {
+            gameObject.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+        });
+        DOVirtual.DelayedCall(0.5f, () =>
+        {
+            gameObject.GetComponent<Dofade>().FadeIn(0.2f);
+        });
+    }
+    private void Unihide(DropArea dropArea)
+    {
+        gameObject.GetComponent<BackgroundTile>().CopyColor(gameObject.GetComponent<BackgroundTile>(),dropArea.GetComponent<BackgroundTile>());
     }
 }

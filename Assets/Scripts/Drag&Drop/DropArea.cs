@@ -20,7 +20,6 @@ public class DropArea : MonoBehaviour
     public void Drop(DraggableComponent draggble)
     {
         OnDropHandler?.Invoke(draggble);
-        this.enabled = false;
     }
     private void OnItemDropped(DraggableComponent draggable)
     {

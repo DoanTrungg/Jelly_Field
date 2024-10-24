@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 4336644295926130992}
   - component: {fileID: 9172891873728729399}
   - component: {fileID: 6180129338904317380}
-  - component: {fileID: 7713223621944575791}
+  - component: {fileID: 7581815166031039417}
+  - component: {fileID: 4519517489132459645}
+  - component: {fileID: 1714361253522388370}
   m_Layer: 5
-  m_Name: Tile
+  m_Name: TileChoice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,8 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hide: 0
-  background: 0
---- !u!114 &7713223621944575791
+--- !u!114 &7581815166031039417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,9 +176,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 468272940892125269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7851e930bea9a564ebf655417a67f80c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fd2d3ea35cd6624da34e3e7431ca5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StarPosition: {x: 0, y: 0, z: 0}
+--- !u!225 &4519517489132459645
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468272940892125269}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1714361253522388370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468272940892125269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980cc3f6f43c1714aa943341d2eb324c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 4519517489132459645}
 --- !u!1001 &45334780043758490
 PrefabInstance:
   m_ObjectHideFlags: 0

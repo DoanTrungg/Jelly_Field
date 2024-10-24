@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class Board : Singleton<Board>
 {
     private const int cellSize3x3 = 70;
-    private const int cellSizeY4x4 = 60;
+    private const int cellSizeY5x5 = 50;
     private int _height;
     private int _width;
     private BackgroundTile[,] _listBackgroundTile;
@@ -22,6 +22,7 @@ public class Board : Singleton<Board>
 
     private void Start()
     {
+        level = ConfigBoard.Instance().level;
         SetupLevelBoard(level);
         ListBackgroundTile = new BackgroundTile[Width, Height];
         SetupBoard();
@@ -54,8 +55,8 @@ public class Board : Singleton<Board>
                 tilePrefab.GetComponent<GridLayoutGroup>().cellSize = new Vector2(tilePrefab.CellSize3x3, tilePrefab.CellSize3x3);
                 break;
             default:
-                gameObject.GetComponent<GridLayoutGroup>().cellSize = new Vector2(cellSizeY4x4, cellSizeY4x4);
-                tilePrefab.GetComponent<GridLayoutGroup>().cellSize = new Vector2(tilePrefab.CellSizeY4x4, tilePrefab.CellSizeY4x4);
+                gameObject.GetComponent<GridLayoutGroup>().cellSize = new Vector2(cellSizeY5x5, cellSizeY5x5);
+                tilePrefab.GetComponent<GridLayoutGroup>().cellSize = new Vector2(tilePrefab.CellSizeY5x5, tilePrefab.CellSizeY5x5);
                 break;
         }
     }
