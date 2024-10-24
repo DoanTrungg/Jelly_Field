@@ -13,7 +13,6 @@ public class Board : Singleton<Board>
     private int _width;
     private BackgroundTile[,] _listBackgroundTile;
     [SerializeField] private BackgroundTile tilePrefab;
-
     public int level;
 
     public BackgroundTile[,] ListBackgroundTile { get => _listBackgroundTile; set => _listBackgroundTile = value; }
@@ -67,5 +66,8 @@ public class Board : Singleton<Board>
         backgroundTile.Row = width;
         backgroundTile.Column = height;
         backgroundTile.transform.SetParent(transform);
+
+        //type
+        if(!backgroundTile.hide && !backgroundTile.background) backgroundTile.RandomTypeTile(Random.Range(0, 4));
     }
 }

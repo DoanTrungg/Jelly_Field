@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class BoardChoice : MonoBehaviour
 {
     public int amout;
     private BackgroundTile[] _listBackgroundTile;
     [SerializeField] private BackgroundTile tilePrefab;
-    int level;
+    private int level;
 
     public BackgroundTile[] ListBackgroundTile { get => _listBackgroundTile; set => _listBackgroundTile = value; }
-
     private void Start()
     {
         level = ConfigBoard.Instance().level;
@@ -29,6 +29,7 @@ public class BoardChoice : MonoBehaviour
             ListBackgroundTile[i].hide = false;
             ListBackgroundTile[i].transform.SetParent(transform, false);
             ListBackgroundTile[i].transform.localPosition = Vector2.zero;
+            
             SetBackgroundTile(ListBackgroundTile[i], transform);
         }
     }
@@ -36,6 +37,7 @@ public class BoardChoice : MonoBehaviour
     {
         backgroundTile.SetupBackgroundTile();
         backgroundTile.transform.SetParent(transform);
+        backgroundTile.RandomTypeTile(Random.Range(0, 4));
         if (level == 3)
         {
             backgroundTile.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);

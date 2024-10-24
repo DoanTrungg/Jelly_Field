@@ -76,6 +76,11 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
                 return;
             }
         }
+        for (int i = 0; i < gameObject.GetComponent<BackgroundTile>().ListDot.Count; i++)
+        {
+            Debug.Log(gameObject.GetComponent<BackgroundTile>().ListDot[i].name + "name");
+            Debug.Log(gameObject.GetComponent<BackgroundTile>().ListDot[i].Id + "name_id");
+        }
         rectTransform.anchoredPosition = StarPosition;
         OnEndDragHandler?.Invoke(eventData, false);
     }

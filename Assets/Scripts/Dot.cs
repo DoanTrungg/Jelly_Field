@@ -12,9 +12,9 @@ public class Dot : MonoBehaviour
 }
 public enum ID
 {
-    One,
-    Two,
-    Three,
-    Four,
+    Pink,
+    Gray,
+    Brown,
+    Green,
     None
 }

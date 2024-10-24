@@ -11,8 +11,10 @@ public class BackgroundTile : MonoBehaviour
     private List<Dot> _listDot = new List<Dot>();
     private int _column;
     private int _row;
+    private Dimension _dimension;
     public bool hide;
     public bool background;
+    private TypeTile typeTile;
     public int Column { get => _column; set => _column = value; }
     public int Row { get => _row; set => _row = value; }
     public List<Dot> ListDot { get => _listDot; set => _listDot = value; }
@@ -22,6 +24,12 @@ public class BackgroundTile : MonoBehaviour
 
     public int CellSizeY5x5 => cellSizeY5x5;
 
+    public Dimension Dimension { get => _dimension; set => _dimension = value; }
+    public TypeTile TypeTile { get => typeTile; set => typeTile = value; }
+    private void Awake()
+    {
+        typeTile = GetComponent<TypeTile>();
+    }
     public void SetupBackgroundTile()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -51,9 +59,9 @@ public class BackgroundTile : MonoBehaviour
             Destroy(GetComponent<DropArea>());
             return;
         }
-        int random = Random.Range(0, ConfigBoard.Instance().listColor.Count);
-        dot.GetComponent<Image>().color = ConfigBoard.Instance().listColor[random];
-        dot.Id = (ID)random;
+        //int random = Random.Range(0, ConfigBoard.Instance().listColor.Count);
+        //dot.GetComponent<Image>().color = ConfigBoard.Instance().listColor[random];
+        //dot.Id = (ID)random;
     }
     public void CopyColor(BackgroundTile newTile, BackgroundTile curretTile)
     {
@@ -80,4 +88,40 @@ public class BackgroundTile : MonoBehaviour
             }
         }
     }
+    public void RandomTypeTile(int random)
+    {
+        if (typeTile == null) Debug.Log("nulllll");
+        switch(random)
+        {
+            case 0:
+                typeTile.TwoHorizonte(this);
+                break;
+            case 1:
+                typeTile.MutiDirectionHorizonte(this, true);
+                break;
+            case 2:
+                typeTile.MutiDirectionHorizonte(this, false);
+                break;
+            case 3:
+                typeTile.TwoVertical(this);
+                break;
+            default:
+                typeTile.AllSynch(this);
+                break;
+        }
+    }
+}
+public enum Dimension
+{
+    OneUpHorizonte,
+    OneDownHorizonte,
+    TwoHorizonte,
+
+    OneRightVertical,
+    OneLeftVertical,
+    TwoVertical,
+
+    ThreeSynch,
+    
+    AllSynch
 }
