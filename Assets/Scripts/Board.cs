@@ -13,6 +13,7 @@ public class Board : Singleton<Board>
     private int _width;
     private BackgroundTile[,] _listBackgroundTile;
     [SerializeField] private BackgroundTile tilePrefab;
+    [SerializeField] private Match match;
     public int level;
 
     public BackgroundTile[,] ListBackgroundTile { get => _listBackgroundTile; set => _listBackgroundTile = value; }
@@ -25,6 +26,16 @@ public class Board : Singleton<Board>
         SetupLevelBoard(level);
         ListBackgroundTile = new BackgroundTile[Width, Height];
         SetupBoard();
+    }
+
+    private void Update()
+    {
+        foreach (var tile in ListBackgroundTile)
+        {
+            if (tile.Hide || tile.Background) continue;
+            tile.CheckDimension();
+            match.MatchTileRight(tile);
+        }
     }
 
     public void SetupBoard()
@@ -68,6 +79,10 @@ public class Board : Singleton<Board>
         backgroundTile.transform.SetParent(transform);
 
         //type
-        if(!backgroundTile.hide && !backgroundTile.background) backgroundTile.RandomTypeTile(Random.Range(0, 4));
+        if (!backgroundTile.hide && !backgroundTile.Background) 
+        { 
+            backgroundTile.RandomTypeTile(Random.Range(0, 4)); 
+            backgroundTile.CheckDimension();
+        }
     }
 }

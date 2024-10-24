@@ -13,7 +13,7 @@ public class BackgroundTile : MonoBehaviour
     private int _row;
     private Dimension _dimension;
     public bool hide;
-    public bool background;
+    private bool background;
     private TypeTile typeTile;
     public int Column { get => _column; set => _column = value; }
     public int Row { get => _row; set => _row = value; }
@@ -26,6 +26,8 @@ public class BackgroundTile : MonoBehaviour
 
     public Dimension Dimension { get => _dimension; set => _dimension = value; }
     public TypeTile TypeTile { get => typeTile; set => typeTile = value; }
+    public bool Background { get => background; set => background = value; }
+
     private void Awake()
     {
         typeTile = GetComponent<TypeTile>();
@@ -49,41 +51,41 @@ public class BackgroundTile : MonoBehaviour
             dot.GetComponent<Image>().color = ConfigBoard.Instance().hide;
             dot.Id = ID.None;
             gameObject.GetComponent<Image>().color = ConfigBoard.Instance().hide;
+            dot.Match = false;
             return;
         }
-        if (background)
+        if (Background)
         {
             dot.GetComponent<Image>().color = ConfigBoard.Instance().backgroundColor;
             dot.Id = ID.None;
             gameObject.GetComponent<Image>().color = ConfigBoard.Instance().backgroundColor;
             Destroy(GetComponent<DropArea>());
+            dot.Match = false;
             return;
         }
-        //int random = Random.Range(0, ConfigBoard.Instance().listColor.Count);
-        //dot.GetComponent<Image>().color = ConfigBoard.Instance().listColor[random];
-        //dot.Id = (ID)random;
     }
     public void CopyColor(BackgroundTile newTile, BackgroundTile curretTile)
     {
-        Debug.Log(curretTile.ListDot.Count + "countttttttt");
         for (int i = 0; i < curretTile.ListDot.Count; i++)
         {
             curretTile.ListDot[i].GetComponent<Image>().color = newTile.ListDot[i].GetComponent<Image>().color;
             curretTile.ListDot[i].Id = newTile.ListDot[i].Id;
+            curretTile.ListDot[i].Match = true;
         }
         curretTile.GetComponent<Image>().color = newTile.GetComponent<Image>().color;
+        curretTile.TypeTile = newTile.TypeTile;
         curretTile.hide = false;
     }
     public void HideTile(bool hide)
     {
-        Color hideColor = ConfigBoard.Instance().backgroundColor;
+        Color hideColor = ConfigBoard.Instance().hide;
         if (hide)
         {
             gameObject.GetComponent<Image>().color = hideColor;
             foreach(var dot  in _listDot)
             {
-                dot.GetComponent<Image>().color = ConfigBoard.Instance().hide;
                 dot.Id = ID.None;
+                dot.Match = false;
                 gameObject.GetComponent<Image>().color = ConfigBoard.Instance().hide;
             }
         }
@@ -110,18 +112,26 @@ public class BackgroundTile : MonoBehaviour
                 break;
         }
     }
+    public void CheckDimension()
+    {
+        if (!typeTile.HorizoneType(this))
+        {
+            typeTile.VerticalType(this);
+        }
+    }
 }
 public enum Dimension
 {
-    OneUpHorizonte,
-    OneDownHorizonte,
     TwoHorizonte,
-
-    OneRightVertical,
-    OneLeftVertical,
     TwoVertical,
 
-    ThreeSynch,
-    
-    AllSynch
+    ThreeSynch_Down_Right,
+    ThreeSynch_Down_Left,
+    ThreeSynch_Up_Right,
+    ThreeSynch_Up_Left,
+
+    AllSynch,
+
+    Mutil
+
 }

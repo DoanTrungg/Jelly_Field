@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -81,6 +83,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
             Debug.Log(gameObject.GetComponent<BackgroundTile>().ListDot[i].name + "name");
             Debug.Log(gameObject.GetComponent<BackgroundTile>().ListDot[i].Id + "name_id");
         }
+        Debug.Log(gameObject.GetComponent<BackgroundTile>().Dimension + "name_Type_Drag");
         rectTransform.anchoredPosition = StarPosition;
         OnEndDragHandler?.Invoke(eventData, false);
     }
@@ -99,6 +102,8 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         DOVirtual.DelayedCall(0.5f, () =>
         {
             gameObject.GetComponent<Dofade>().FadeIn(0.2f);
+            gameObject.GetComponent<BackgroundTile>().RandomTypeTile(Random.Range(0, 4));
+            gameObject.GetComponent<BackgroundTile>().CheckDimension();
         });
     }
     private void Unihide(DropArea dropArea)

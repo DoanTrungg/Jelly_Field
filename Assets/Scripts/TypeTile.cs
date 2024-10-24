@@ -38,8 +38,6 @@ public class TypeTile : MonoBehaviour
         ChangeColorDot(tile, 2, random);
         ChangeColorDot(tile, 3, random);
 
-        tile.Dimension = Dimension.AllSynch;
-
         return tile;
     }
     public BackgroundTile TwoHorizonte(BackgroundTile tile)
@@ -106,7 +104,7 @@ public class TypeTile : MonoBehaviour
         tile.ListDot[indexListDot].GetComponent<Image>().color = ConfigBoard.Instance().listColor[radom];
         tile.ListDot[indexListDot].Id = (ID)radom;
     }
-    private bool HorizoneType(BackgroundTile tile)
+    public bool HorizoneType(BackgroundTile tile)
     {
         List<Dot> listDot = tile.ListDot;
 
@@ -115,9 +113,14 @@ public class TypeTile : MonoBehaviour
         ID id2 = listDot[2].Id;
         ID id3 = listDot[3].Id;
 
+        if(id0 == id1 && id0 == id2 && id0 == id3) 
+        {
+            tile.Dimension = Dimension.AllSynch;
+            return true; 
+        }
         if (id0 == id1)
         {
-            if (id0 != id2 || id0 != id3 || id1 != id2 || id1 != id3)
+            if (id0 != id2 && id0 != id3)
             {
                 if (id2 == id3)
                 {
@@ -125,27 +128,64 @@ public class TypeTile : MonoBehaviour
                 }
                 else
                 {
-                    tile.Dimension = Dimension.OneUpHorizonte;
+                    tile.Dimension = Dimension.Mutil;
                 }
             }
             else
             {
-                tile.Dimension = Dimension.ThreeSynch;
+                if (id0 == id2)
+                {
+                    tile.Dimension = Dimension.ThreeSynch_Down_Left;
+                }
+                if (id0 == id3)
+                {
+                    tile.Dimension = Dimension.ThreeSynch_Down_Right;
+                }
             }
 
             return true;
         }
         else
         {
-            if(id2 == id3) 
+            if (id2 == id3)
             {
-                tile.Dimension = Dimension.OneDownHorizonte;
-
+                if (id2 == id0)
+                {
+                    tile.Dimension = Dimension.ThreeSynch_Up_Left;
+                }
+                else if (id2 == id1)
+                {
+                    tile.Dimension = Dimension.ThreeSynch_Up_Right;
+                }
+                else
+                {
+                    tile.Dimension = Dimension.Mutil;
+                }
                 return true;
             }
-
-            return false;
+            else
+            {
+                tile.Dimension = Dimension.Mutil;
+                return false;
+            }
         }
 
+    }
+
+    public bool VerticalType(BackgroundTile tile)
+    {
+        List<Dot> listDot = tile.ListDot;
+
+        ID id0 = listDot[0].Id;
+        ID id1 = listDot[1].Id;
+        ID id2 = listDot[2].Id;
+        ID id3 = listDot[3].Id;
+
+        if(id0 == id2 && id1 == id3)
+        {
+            tile.Dimension = Dimension.TwoVertical;
+            return true;
+        }
+        return false;
     }
 }

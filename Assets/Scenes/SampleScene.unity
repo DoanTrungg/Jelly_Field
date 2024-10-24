@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 6180129338904317380, guid: ae2c7cc3a68f46f44a38156b1f05b6a7, type: 3}
+  match: {fileID: 1526917535}
   level: 3
 --- !u!114 &205055302
 MonoBehaviour:
@@ -686,7 +687,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1999428367
+--- !u!1 &1526917534
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -694,37 +695,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1999428369}
-  - component: {fileID: 1999428368}
+  - component: {fileID: 1526917536}
+  - component: {fileID: 1526917535}
   m_Layer: 0
-  m_Name: TypeTile
+  m_Name: MatchMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1999428368
+--- !u!114 &1526917535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999428367}
+  m_GameObject: {fileID: 1526917534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 963bedf22b98cee49b7aaa4848d17373, type: 3}
+  m_Script: {fileID: 11500000, guid: 90403522524dd7e469b83d14fec7a35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1999428369
+--- !u!4 &1526917536
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999428367}
+  m_GameObject: {fileID: 1526917534}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.63675, y: 229.16534, z: -0.6470382}
+  m_LocalPosition: {x: 140.07571, y: 168.78351, z: -0.96489275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -917,4 +918,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1474976680}
   - {fileID: 121237920}
-  - {fileID: 1999428369}
+  - {fileID: 1526917536}

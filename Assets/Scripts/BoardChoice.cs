@@ -38,6 +38,7 @@ public class BoardChoice : MonoBehaviour
         backgroundTile.SetupBackgroundTile();
         backgroundTile.transform.SetParent(transform);
         backgroundTile.RandomTypeTile(Random.Range(0, 4));
+        backgroundTile.CheckDimension();
         if (level == 3)
         {
             backgroundTile.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);
