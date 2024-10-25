@@ -37,7 +37,14 @@ public class BoardChoice : MonoBehaviour
     {
         backgroundTile.SetupBackgroundTile();
         backgroundTile.transform.SetParent(transform);
-        backgroundTile.RandomTypeTile(Random.Range(0, 4));
+        if(level == 1 || level ==2)
+        {
+            backgroundTile.RandomTypeTile(Random.Range(0, 2));
+        }
+        else
+        {
+            backgroundTile.RandomTypeTile(Random.Range(0, 4));
+        }
         backgroundTile.CheckDimension();
         if (level == 3)
         {

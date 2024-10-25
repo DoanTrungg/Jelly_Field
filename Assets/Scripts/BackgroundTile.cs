@@ -1,3 +1,4 @@
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,10 +71,10 @@ public class BackgroundTile : MonoBehaviour
         {
             curretTile.ListDot[i].GetComponent<Image>().color = newTile.ListDot[i].GetComponent<Image>().color;
             curretTile.ListDot[i].Id = newTile.ListDot[i].Id;
-            curretTile.ListDot[i].Match = true;
         }
         curretTile.GetComponent<Image>().color = newTile.GetComponent<Image>().color;
         curretTile.TypeTile = newTile.TypeTile;
+        curretTile.Dimension = newTile.Dimension;
         curretTile.hide = false;
     }
     public void HideTile(bool hide)
@@ -81,14 +82,29 @@ public class BackgroundTile : MonoBehaviour
         Color hideColor = ConfigBoard.Instance().hide;
         if (hide)
         {
-            gameObject.GetComponent<Image>().color = hideColor;
-            foreach(var dot  in _listDot)
+            Sequence sequence = DOTween.Sequence();
+            sequence.Join(gameObject.GetComponent<Image>().DOColor(hideColor, 0.5f));
+
+            foreach (var dot in _listDot)
             {
                 dot.Id = ID.None;
                 dot.Match = false;
-                gameObject.GetComponent<Image>().color = ConfigBoard.Instance().hide;
+
+                sequence.Join(dot.GetComponent<Image>().DOColor(ConfigBoard.Instance().hide, 0.5f))
+                        .Join(dot.GetComponent<Dofade>().FadeOut(0.5f));
             }
+
+            sequence.AppendCallback(() =>
+            {
+                foreach (var dot in _listDot)
+                {
+                    dot.GetComponent<Dofade>().FadeIn(0.5f);
+                }
+                sequence.Join(gameObject.GetComponent<Image>().DOColor(hideColor, 0.5f));
+            });
+            sequence.Play();
         }
+
     }
     public void RandomTypeTile(int random)
     {
@@ -99,14 +115,18 @@ public class BackgroundTile : MonoBehaviour
                 typeTile.TwoHorizonte(this);
                 break;
             case 1:
-                typeTile.MutiDirectionHorizonte(this, true);
-                break;
-            case 2:
-                typeTile.MutiDirectionHorizonte(this, false);
-                break;
-            case 3:
                 typeTile.TwoVertical(this);
                 break;
+            case 2:
+                typeTile.AllSynch(this);
+                break;
+            case 3:
+                typeTile.MutiDirectionHorizonte(this, false);
+                break;
+            case 4:
+                typeTile.MutiDirectionHorizonte(this, true);
+                break;
+
             default:
                 typeTile.AllSynch(this);
                 break;

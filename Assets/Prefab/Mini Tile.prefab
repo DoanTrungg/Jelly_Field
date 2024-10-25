@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2387411305429152189}
   - component: {fileID: 8175090297903123639}
   - component: {fileID: 5952609018804693333}
+  - component: {fileID: 8691824593274023654}
+  - component: {fileID: 4091237695695287761}
   m_Layer: 5
   m_Name: Mini Tile
   m_TagString: Untagged
@@ -88,3 +90,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e435d4d3ca373764ba41e5bd091f9177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8691824593274023654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7228433043926849497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980cc3f6f43c1714aa943341d2eb324c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 4091237695695287761}
+--- !u!225 &4091237695695287761
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7228433043926849497}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

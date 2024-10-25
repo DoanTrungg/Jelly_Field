@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6180129338904317380}
   - component: {fileID: 7713223621944575791}
   - component: {fileID: 9036732706680339675}
+  - component: {fileID: 5094550890881594565}
+  - component: {fileID: 7125470826120677365}
   m_Layer: 5
   m_Name: Tile
   m_TagString: Untagged
@@ -190,6 +192,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963bedf22b98cee49b7aaa4848d17373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5094550890881594565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468272940892125269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980cc3f6f43c1714aa943341d2eb324c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 7125470826120677365}
+--- !u!225 &7125470826120677365
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468272940892125269}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &45334780043758490
 PrefabInstance:
   m_ObjectHideFlags: 0

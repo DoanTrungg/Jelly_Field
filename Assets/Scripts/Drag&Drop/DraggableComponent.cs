@@ -102,7 +102,14 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         DOVirtual.DelayedCall(0.5f, () =>
         {
             gameObject.GetComponent<Dofade>().FadeIn(0.2f);
-            gameObject.GetComponent<BackgroundTile>().RandomTypeTile(Random.Range(0, 4));
+            if (ConfigBoard.Instance().level == 1 || ConfigBoard.Instance().level == 2)
+            {
+                gameObject.GetComponent<BackgroundTile>().RandomTypeTile(Random.Range(0, 2));
+            }
+            else
+            {
+                gameObject.GetComponent<BackgroundTile>().RandomTypeTile(Random.Range(0, 4));
+            }
             gameObject.GetComponent<BackgroundTile>().CheckDimension();
         });
     }

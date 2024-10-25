@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7498dfeebbe46274598b5a0398ea6ddc, type: 3}
   m_Name: RemoteConfig
   m_EditorClassIdentifier: 
-  level: 3
+  level: 2
   listLevel:
   - width: 3
     height: 3

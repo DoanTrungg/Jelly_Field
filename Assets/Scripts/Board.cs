@@ -35,7 +35,17 @@ public class Board : Singleton<Board>
             if (tile.Hide || tile.Background) continue;
             tile.CheckDimension();
             match.MatchTileRight(tile);
+
+            tile.CheckDimension();
+            match.MatchTileLeft(tile);
+
+            tile.CheckDimension();
+            match.MatchTileUp(tile);
+
+            tile.CheckDimension();
+            match.MatchTileDown(tile);
         }
+        match.UpdateTileAfterMatch();
     }
 
     public void SetupBoard()
@@ -81,8 +91,17 @@ public class Board : Singleton<Board>
         //type
         if (!backgroundTile.hide && !backgroundTile.Background) 
         { 
-            backgroundTile.RandomTypeTile(Random.Range(0, 4)); 
-            backgroundTile.CheckDimension();
+            if(level == 0 || level == 1)
+            {
+                backgroundTile.RandomTypeTile(Random.Range(0, 2));
+                backgroundTile.CheckDimension();
+            }
+            else
+            {
+                backgroundTile.RandomTypeTile(Random.Range(0, 4));
+                backgroundTile.CheckDimension();
+            }
+            
         }
     }
 }
